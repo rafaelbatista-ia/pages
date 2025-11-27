@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transforme Seu Negócio com IA e Automações</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,107,107,0.6);
+            background: #ff5252;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 60px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 2.5em;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .feature-card p {
+            color: #7f8c8d;
+            line-height: 1.8;
+        }
+
+        .benefits {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .benefit-item h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .testimonials {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 60px auto 0;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-size: 5em;
+            color: #667eea;
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            color: #555;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .testimonial-role {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .pricing {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 60px auto 0;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid #667eea;
+            transform: scale(1.05);
+        }
+
+        .pricing-badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .pricing-plan {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .pricing-price {
+            font-size: 3em;
+            font-weight: 700;
+            color: #667eea;
+            margin: 20px 0;
+        }
+
+        .pricing-price span {
+            font-size: 0.4em;
+            color: #7f8c8d;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #ecf0f1;
+            color: #555;
+        }
+
+        .pricing-features li::before {
+            content: "✓";
+            color: #667eea;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transforme Seu Negócio com IA e Automações</h1>
+            <p>Aumente sua produtividade em até 400% e reduza custos operacionais com soluções inteligentes de automação</p>
+            <a href="#contato" class="cta-button">Quero Automatizar Agora</a>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">Por Que Investir em Automação?</h2>
+        <p class="section-subtitle">Empresas que automatam processos crescem 3x mais rápido que a concorrência</p>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>Atendimento 24/7</h3>
+                <p>Chatbots inteligentes que atendem seus clientes a qualquer hora, sem pausas ou limitações</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Processos Automáticos</h3>
+                <p>Elimine tarefas repetitivas e libere sua equipe para atividades estratégicas de alto valor</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Análise Inteligente</h3>
+                <p>IA que analisa dados e fornece insights valiosos para tomada de decisões mais assertivas</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Redução de Custos</h3>
+                <p>Economize até 70% em custos operacionais automatizando processos manuais</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Leads Qualificados</h3>
+                <p>Sistemas que identificam, qualificam e nutrem leads automaticamente para sua equipe</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Escalabilidade</h3>
+                <p>Cresça seu negócio sem aumentar proporcionalmente sua estrutura de custos</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Benefícios Comprovados</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4>⏱️ Economia de Tempo</h4>
+                    <p>Automatize tarefas que consomem horas da sua equipe diariamente</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>📈 Aumento de Conversão</h4>
+                    <p>Resposta imediata aos leads aumenta conversão em até 300%</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>✨ Experiência Premium</h4>
+                    <p>Atendimento personalizado e eficiente encanta seus clientes</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>🔒 Segurança de Dados</h4>
+                    <p>Proteção total das informações com sistemas criptografados</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>📱 Multi-canal</h4>
+                    <p>Integração com WhatsApp, Instagram, site e outros canais</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>🎓 Suporte Completo</h4>
+                    <p>Treinamento e acompanhamento durante toda implementação</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <h2 class="section-title" style="color: white;">Resultados que Falam</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">400%</div>
+                <div class="stat-label">Aumento de Produtividade</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">70%</div>
+                <div class="stat-label">Redução de Custos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Atendimento Disponível</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">300%</div>
+                <div class="stat-label">Mais Conversões</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">A automação do atendimento transformou nosso escritório. Conseguimos atender 5x mais clientes com a mesma equipe.</p>
+                    <p class="testimonial-author">Dr. Carlos Silva</p>
+                    <p class="testimonial-role">Advogado - Escritório de Direito Bancário</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Nosso faturamento triplicou após implementar o sistema de qualificação automática de leads. ROI incrível!</p>
+                    <p class="testimonial-author">Marina Costa</p>
+                    <p class="testimonial-role">CEO - Empresa de Consultoria</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Eliminamos 80% das tarefas repetitivas. A equipe agora foca no que realmente importa: fechar negócios.</p>
+                    <p class="testimonial-author">Pedro Oliveira</p>
+                    <p class="testimonial-role">Diretor Comercial - Tech Solutions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Planos e Investimento</h2>
+            <p class="section-subtitle">Escolha a solução ideal para o seu negócio</p>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3 class="pricing-plan">Starter</h3>
+                    <div class="pricing-price">R$ 997<span>/mês</span></div>
+                    <ul class="pricing-features">
+                        <li>Chatbot WhatsApp</li>
+                        <li>Até 1.000 contatos/mês</li>
+                        <li>Respostas automáticas</li>
+                        <li>Relatórios básicos</li>
+                        <li>Suporte por email</li>
+                    </ul>
+                    <a href="#contato" class="cta-button">Começar Agora</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">MAIS POPULAR</div>
+                    <h3 class="pricing-plan">Professional</h3>
+                    <div class="pricing-price">R$ 2.497<span>/mês</span></div>
+                    <ul class="pricing-features">
+                        <li>Tudo do Starter +</li>
+                        <li>Até 5.000 contatos/mês</li>
+                        <li>Múltiplos canais</li>
+                        <li>Qualificação de leads</li>
+                        <li>CRM integrado</li>
+                        <li>Análise com IA</li>
+                        <li>Suporte prioritário</li>
+                    </ul>
+                    <a href="#contato" class="cta-button">Escolher Plano</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3 class="pricing-plan">Enterprise</h3>
+                    <div class="pricing-price">Customizado</div>
+                    <ul class="pricing-features">
+                        <li>Solução personalizada</li>
+                        <li>Contatos ilimitados</li>
+                        <li>Automações avançadas</li>
+                        <li>API dedicada</li>
+                        <li>Integração customizada</li>
+                        <li>Gerente de conta</li>
+                        <li>SLA garantido</li>
+                    </ul>
+                    <a href="#contato" class="cta-button">Falar com Consultor</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contato">
+        <div class="hero-content">
+            <h2>Pronto Para Transformar Seu Negócio?</h2>
+            <p>Agende uma demonstração gratuita e descubra como a IA pode revolucionar seus processos</p>
+            <a href="https://wa.me/5571999999999?text=Olá! Quero saber mais sobre automações com IA" class="cta-button" target="_blank">Falar com Especialista</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 IA & Automações. Todos os direitos reservados.</p>
+        <p>Transformando negócios através da tecnologia</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animação de entrada dos cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    entry.target.style.transition = 'all 0.6s ease';
+                    
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .benefit-item, .testimonial-card, .pricing-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
